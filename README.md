@@ -1,6 +1,10 @@
 # Qmet
 
-Qmet is a library/tool for QML Snippets that allows you to write QML-like structures using a concise, abbreviation-based syntax. This approach enables rapid creation of nested and repeated elements, similar to how some editors.
+Qmet is a tool inspired by [Emmet](https://emmet.io/), created to let you write abbreviations in QML that are automatically expanded into full code.
+
+## Case os uses
+
+Now it's only used on [notus-qml-lsp](https://github.com/luizh3/notus-qml-lsp), for mor details check the project.
 
 ## Installation
 
@@ -30,16 +34,141 @@ import { /* functions, classes, etc. */ } from 'qmet';
 
 Here are some example queries or usages:
 
+> Nested
+
 ```
 row>column>rectangle
+```
+
+```
+Row {
+    Column {
+        Rectangle {
+        
+        }
+    }
+}
+```
+---
+
+> Nested more sum
+
+```
 row>column+rectangle
-row>3*column
-row>column>3*rectangle
+```
+
+```
+Row {
+    Column {
+        
+    }
+    Rectangle {
+        
+    }
+}
+```
+---
+
+> Nested with multiplication
+
+```
+row>column+rectangle
+```
+
+```
+Row {
+    Row {
+        
+    }
+    Row {
+        
+    }
+    Row {
+        
+    }
+}
+```
+---
+
+> Only sum
+
+```
 row+column+rectangle
+```
+
+```
+Row {
+    
+}
+Column {
+    
+}
+Rectangle {
+    
+}
+```
+---
+
+> Multiplication and sum
+
+```
 3*row+rectangle
-3*rectangle
+```
+
+```
+Row {
+    
+}
+Row {
+    
+}
+Row {
+    
+}
+Rectangle {
+    
+}
+```
+---
+
+> Nested multiplication
+
+```
 3*rectangle>row>rectangle
 ```
+
+```
+Rectangle {
+    Row {
+        Rectangle {
+            
+        }
+    }
+}
+Rectangle {
+    Row {
+        Rectangle {
+            
+        }
+    }
+}
+Rectangle {
+    Row {
+        Rectangle {
+            
+        }
+    }
+}
+```
+
+### Gif Example
+
+![Gif Example](documentation/example.gif)
+
+## Dependencies
+
+- [tree-sitter-qmet](git@github.com:luizh3/tree-sitter-qmet.git)
+  - It's used for parser query on a language and convert in a AST
 
 ## License
 

@@ -5,9 +5,19 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "./src/index.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "require": "./build/index.js"
+    }
+  },
+  "files": [
+    "build"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "dependencies": {
     "tree-sitter": "^0.25.0",

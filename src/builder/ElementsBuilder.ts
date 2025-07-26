@@ -12,6 +12,11 @@ export default class ElementBuilder {
         this.currentElements = [];
     }
 
+    clear() {
+        this.currentGroup = null;
+        this.currentElements = [];
+    }
+
     createGroup() {
 
         this.currentGroup = {
@@ -23,9 +28,13 @@ export default class ElementBuilder {
     }
 
     build() {
-        return this.currentGroup?.elements
+        const result = this.currentGroup?.elements
             .map(element => this.generateBody(element))
             .join('\n');
+
+        this.clear();
+
+        return result;
     }
 
     addUnitElement(node: SyntaxNode) {

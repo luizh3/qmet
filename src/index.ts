@@ -1,1 +1,1 @@
-export * from "./TemplateEngine"
+export { default as TemplateEngine } from './TemplateEngine';
